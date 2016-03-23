@@ -1,6 +1,4 @@
 function [ output_args ] = plothaze( input_args )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
 
 clc;clear;
 
@@ -21,7 +19,7 @@ showvalue = 'off';
 use_mysql = 'off';
 
 if strcmpi(use_mysql, 'on')
-    %conn = database('104.236.242.31:32769', 'root', 'hazepassw0rd');
+    conn = database('104.236.242.31:32769', 'root', 'hazepassw0rd');
 else
     conn = database('beijing.sqlite', '', '', 'org.sqlite.JDBC','jdbc:sqlite:/Users/sowicm/Documents/MATLAB/beijing.sqlite');
 end;
