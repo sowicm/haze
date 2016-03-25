@@ -15,6 +15,11 @@ single = 'off';
 showname = 'off';
 % showvalue, whether show monitoring excat values
 showvalue = 'off';
+% interp_method, interpolation method, could be
+%            'nearest', 'linear', 'natural', 'cubic'                
+interp_method = 'cubic';
+% plot_colorbar, whether show colorbar
+plot_colorbar = 'on';
 
 use_mysql = 'off';
 
@@ -115,12 +120,14 @@ for s = 1:12
     [xx, yy] = meshgrid(latlim, lonlim);
     %zi = interp2(aa, bb, zz, xx, yy, 'spline')%, 0);
     %surfm(xx, yy, values);
-    zz = griddata(lats, lons, values, xx, yy, 'cubic');
+    zz = griddata(lats, lons, values, xx, yy, interp_method);%'cubic');
     surfm(xx, yy, zz);%zi);
     %shading interp;
     %shading flat;
     %demcmap(values);
-    %colorbar;
+    if strcmpi(plot_colorbar, 'on')
+        colorbar;
+    end;
 
     if strcmpi(showvalue, 'on')
         for i = 1:length(points)
